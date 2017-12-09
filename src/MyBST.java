@@ -1,16 +1,32 @@
+import java.util.Scanner;
 
 public class MyBST {
 
 	public static void main(String[] args) {
-		int[] devArray = {10,5,12,3,1,13,7,2,4,14,9,8,6,11};
-		BSTTree tree = new BSTTree();
-		for(int i=0; i < devArray.length; i++) {
-			tree.Insert(devArray[i]);
-		}
 		
-		int temp = tree.FindItem(9);
-		System.out.println(temp);
-	}
+			Scanner inputReader = new Scanner(System.in);
+			System.out.print("Enter the number of integers: ");
+			int numberOfIntegers = inputReader.nextInt();
+			BSTTree tree = new BSTTree();
+			
+			for(int i = 0; i < numberOfIntegers; i++) {
+				System.out.print("Enter the integer on poistion " + i + ": ");
+				int temp = inputReader.nextInt();
+				tree.Insert(temp);
+			}
+			
+			System.out.print("Enter a value to search for: ");
+			int valueToSearch = inputReader.nextInt();
+			int steps = tree.FindItem(valueToSearch);
+			if(steps == -1) {
+				System.out.println("Value not found!");
+			}
+			else {
+				System.out.println("Value found after " + steps + " itterations");
+			}
+			
+			inputReader.close();
+		}
 	
 
 }
