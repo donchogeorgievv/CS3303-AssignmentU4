@@ -1,6 +1,6 @@
 public class BSTTree{
 	BSTNode root = null;
-
+	int stepsTaken = 0;
 	//Method to add new items to the tree
 	public void Insert(int value){
 		if(root == null) { //Empty tree, and the first node we add is the root
@@ -35,11 +35,33 @@ public class BSTTree{
 		}
 	}
 	
-	
+
+
 	//Method to return the number of steps taken to find the value
 	//if the value was not found, the method will return -1
 	public int FindItem(int value){
-		return -1;
+		if(root == null) {
+			return -1; //tree is empty
+		}
+		if(root.value == value) {
+			return 1;
+		}
+		BSTNode currentNode = root;
+		while(currentNode != null) {
+			stepsTaken++;
+			if(currentNode.value == value) {
+				return stepsTaken;
+			}
+			else if(currentNode.value > value){
+				currentNode = currentNode.leftChild;
+			}
+			else {
+				currentNode = currentNode.rightChild;
+			}
+		}
+		
+		return -1; //traversed the tree, the value was not found
 	}
+
 
 }

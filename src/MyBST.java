@@ -7,6 +7,9 @@ public class MyBST {
 		for(int i=0; i < devArray.length; i++) {
 			tree.Insert(devArray[i]);
 		}
+		
+		int temp = tree.FindItem(9);
+		System.out.println(temp);
 	}
 	
 
